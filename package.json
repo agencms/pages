@@ -1,0 +1,26 @@
+{
+    "name": "pages",
+    "version": "1.0.0",
+    "description": "Pages module for Agencms",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "precommit": "lint-staged"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/agencms/pages.git"
+    },
+    "author": "Marco Mark <m2de@outlook.com>",
+    "license": "GPL-3.0",
+    "bugs": {
+        "url": "https://github.com/agencms/pages/issues"
+    },
+    "homepage": "https://github.com/agencms/pages#readme",
+    "devDependencies": {
+        "husky": "^0.14.3",
+        "lint-staged": "^6.0.0",
+        "markdownlint-cli": "^0.5.0",
+        "jsonlint": "^1.6.0"
+    }
+}

@@ -2,6 +2,7 @@
 
 namespace Agencms\Pages\Providers;
 
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Agencms\Pages\Handlers\AgencmsHandler;
 use Silvanite\Brandenburg\Traits\ValidatesPermissions;

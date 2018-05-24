@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8acde4824d0524b6eb369ba07106be83",
+    "content-hash": "2f99174417b499a51b9781289f02f18c",
     "packages": [
         {
             "name": "agencms/auth",
@@ -106,6 +106,52 @@
             ],
             "description": "Laravel CMS Library for Agencms",
             "time": "2018-05-08T20:46:59+00:00"
+        },
+        {
+            "name": "agencms/structured-data",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/agencms/structured-data.git",
+                "reference": "f1da29a0c50e3ac5e922265895e4dbe353d2afd9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/agencms/structured-data/zipball/f1da29a0c50e3ac5e922265895e4dbe353d2afd9",
+                "reference": "f1da29a0c50e3ac5e922265895e4dbe353d2afd9",
+                "shasum": ""
+            },
+            "require": {
+                "agencms/core": "^1.1"
+            },
+            "require-dev": {
+                "squizlabs/php_codesniffer": "^3.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Agencms\\StructuredData\\Providers\\AppServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Agencms\\StructuredData\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Marco Mark",
+                    "email": "m2de@outlook.com"
+                }
+            ],
+            "description": "Google Structured Data for Agencms",
+            "time": "2018-05-22T20:10:22+00:00"
         },
         {
             "name": "asm89/stack-cors",

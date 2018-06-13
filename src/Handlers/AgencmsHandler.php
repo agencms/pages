@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Agencms\Pages\Middleware\AgencmsConfig;
 use Illuminate\Support\Facades\Route as Router;
+use Agencms\StructuredData\Facades\StructuredData;
 
 class AgencmsHandler
 {
@@ -38,6 +39,7 @@ class AgencmsHandler
         }
 
         self::registerAgencms();
+        self::registerSettings();
     }
 
     /**
@@ -53,10 +55,105 @@ class AgencmsHandler
 
         Agencms::registerRoute(
             Route::init('pages', ['Pages' => 'All Pages'], '/agencms/pages')
-                ->icon('person')
+                ->icon('file_copy')
                 ->addGroup(
-                    Group::large('Configuration')->addField(
-                        Field::string('title', 'Title')->required()->list()
+                    Group::full('Details')->addField(
+                        Field::string('name', 'Name')
+                            ->medium()->required()->list()->link('slug'),
+                        Field::string('slug', 'Slug')
+                            ->medium()->required()->list()->slug(),
+                        Field::number('priority', 'Priority')
+                            ->medium()->required()->list(),
+                        Field::boolean('published', 'Published')
+                            ->medium()->required()->list(),
+                        Field::string('summary', 'Summary')
+                                ->medium()->multiline(15),
+                        Field::image('image', 'Featured Image')
+                            ->medium()->ratio(1280, 630, $resize = true)
+                    ),
+                    Group::full('Content')
+                        ->repeater('content')
+                        ->addGroup(
+                            Group::full('Lead')
+                                ->key('lead')
+                                ->addField(
+                                    Field::image('image', 'Image')
+                                        ->ratio(1280, 800, $resize = true),
+                                    Field::string('title', 'Title'),
+                                    Field::string('subtitle', 'Subtitle')
+                                ),
+                            Group::full('Text')
+                                ->key('text')
+                                ->addField(
+                                    Field::string('text', 'Text')
+                                        ->multiline()
+                                ),
+                            Group::full('Image')
+                                ->key('image')
+                                ->addField(
+                                    Field::image('image', 'Image')
+                                        ->ratio(1280, 800, $resize = true),
+                                    Field::string('alt', 'Alternative Text'),
+                                    Field::string('href', 'Link Target')
+                                )
+                        ),
+                    StructuredData::repeater()
+                )
+        );
+    }
+
+    /**
+     * Append the general settings with additional settings for the Pages plugin
+     *
+     * @return void
+     */
+    public static function registerSettings()
+    {
+        if (!Gate::allows('settings_read')) {
+            return;
+        }
+
+        Agencms::appendRoute(
+            Route::load('settings')
+                ->addGroup(
+                    Group::full('Header')->key('header')->addField(
+                        Field::string('title', 'Title'),
+                        Field::string('twitter-handle', 'Twitter Handle'),
+                        Field::string('github-handle', 'Github Handle')
+                    ),
+                    Group::full('Homepage')->key('homepage')->addField(
+                        Field::related('homepage', 'Homepage')
+                            ->model(
+                                Relationship::make('pages')
+                            )
+                    ),
+                    Group::full('Social Links')->repeater('sociallinks')
+                        ->addGroup(
+                            Group::full('Link')->key('sociallink')->addField(
+                                Field::select('network', 'Network')
+                                    ->dropdown()
+                                    ->addOptions([
+                                        'Codepen',
+                                        'Facebook',
+                                        'Github',
+                                        'Instagram',
+                                        'LinkedIn',
+                                        'Twitter',
+                                    ])
+                                    ->small(),
+                                Field::string('url', 'Url')
+                                    ->large()
+                            )
+                        ),
+                    Group::full('Footer')->key('footer')->addField(
+                        Field::string('copyright', 'Copyright Notice')
+                    ),
+                    Group::full('Defaults')->key('defaults')->addField(
+                        Field::image('sharingimage', 'Default Sharing Image')
+                            ->ratio(1200, 630, true)
+                    ),
+                    Group::full('Config')->key('config')->addField(
+                        Field::string('ga_code', 'Google Analytics Id')
                     )
                 )
         );

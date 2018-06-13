@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2f99174417b499a51b9781289f02f18c",
+    "content-hash": "958ebe1e8397b5cf6a75f6e09265bf01",
     "packages": [
         {
             "name": "agencms/auth",
@@ -108,6 +108,52 @@
             "time": "2018-05-08T20:46:59+00:00"
         },
         {
+            "name": "agencms/settings",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/agencms/settings.git",
+                "reference": "ae477ba10ec26543012b6307b7dc5258a3276953"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/agencms/settings/zipball/ae477ba10ec26543012b6307b7dc5258a3276953",
+                "reference": "ae477ba10ec26543012b6307b7dc5258a3276953",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^5.4|^5.5|^5.6"
+            },
+            "require-dev": {
+                "squizlabs/php_codesniffer": "^3.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Agencms\\Settings\\Providers\\SettingsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Agencms\\Settings\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Marco Mark",
+                    "email": "marco@silvanite.com"
+                }
+            ],
+            "description": "Settings module for Agencms",
+            "time": "2018-05-21T19:29:25+00:00"
+        },
+        {
             "name": "agencms/structured-data",
             "version": "v1.0.0",
             "source": {
@@ -152,6 +198,60 @@
             ],
             "description": "Google Structured Data for Agencms",
             "time": "2018-05-22T20:10:22+00:00"
+        },
+        {
+            "name": "andreasindal/laravel-markdown",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/andreasindal/laravel-markdown.git",
+                "reference": "899e124a4f3ac07c4e6445c87d8d34d1cbfe127f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/andreasindal/laravel-markdown/zipball/899e124a4f3ac07c4e6445c87d8d34d1cbfe127f",
+                "reference": "899e124a4f3ac07c4e6445c87d8d34d1cbfe127f",
+                "shasum": ""
+            },
+            "require": {
+                "erusev/parsedown": "^1.6",
+                "illuminate/support": "5.6.*"
+            },
+            "require-dev": {
+                "mockery/mockery": "~1.0",
+                "phpunit/phpunit": "~7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Indal\\Markdown\\MarkdownServiceProvider"
+                    ],
+                    "aliases": {
+                        "Markdown": "Indal\\Markdown\\Facade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Indal\\Markdown\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andreas Indal",
+                    "email": "andreas@rocketship.se"
+                }
+            ],
+            "description": "Simple Blade directive for markdown parsing.",
+            "time": "2018-03-03T21:27:36+00:00"
         },
         {
             "name": "asm89/stack-cors",

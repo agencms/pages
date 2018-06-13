@@ -16,10 +16,12 @@ class PagesServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Router $router, Kernel $kernel)
+    public function boot()
     {
-        $this->loadMigrationsFrom(__DIR__.'/../Database/Migrations');
-        // $this->registerApiRoutes();
+        $this->loadMigrationsFrom(__DIR__.'/../Migrations');
+        $this->bootViews();
+        $this->registerApiRoutes();
+        $this->registerWebRoutes();
     }
 
     /**
@@ -31,6 +33,39 @@ class PagesServiceProvider extends ServiceProvider
     {
         $this->registerPermissions();
         AgencmsHandler::register();
+    }
+
+    /**
+     * Load Agencms views used for rendering content
+     *
+     * @return void
+     */
+    private function bootViews()
+    {
+        $this->loadViewsFrom(__DIR__.'/../Resources/Views', 'agencms');
+        $this->publishes([
+            __DIR__.'/../Resources/Views' => resource_path('views/vendor/agencms'),
+        ], 'views');
+    }
+
+    /**
+     * Load Api Routes into the application
+     *
+     * @return void
+     */
+    private function registerApiRoutes()
+    {
+        $this->loadRoutesFrom(__DIR__.'/../Routes/api.php');
+    }
+
+    /**
+     * Load Web Routes into the application
+     *
+     * @return void
+     */
+    private function registerWebRoutes()
+    {
+        $this->loadRoutesFrom(__DIR__.'/../Routes/web.php');
     }
 
     /**

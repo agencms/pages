@@ -56,16 +56,16 @@
         },
         {
             "name": "agencms/core",
-            "version": "1.1.2",
+            "version": "1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/agencms/core.git",
-                "reference": "2aae1bd07c4ab273fd07faa0057224ee3acce401"
+                "reference": "9ffac911d78530fad461a34b9a6d8563a3492958"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/agencms/core/zipball/2aae1bd07c4ab273fd07faa0057224ee3acce401",
-                "reference": "2aae1bd07c4ab273fd07faa0057224ee3acce401",
+                "url": "https://api.github.com/repos/agencms/core/zipball/9ffac911d78530fad461a34b9a6d8563a3492958",
+                "reference": "9ffac911d78530fad461a34b9a6d8563a3492958",
                 "shasum": ""
             },
             "require": {
@@ -105,7 +105,7 @@
                 }
             ],
             "description": "Laravel CMS Library for Agencms",
-            "time": "2018-05-08T20:46:59+00:00"
+            "time": "2018-06-17T17:11:44+00:00"
         },
         {
             "name": "agencms/settings",

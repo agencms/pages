@@ -19,6 +19,7 @@ class PagesServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadMigrationsFrom(__DIR__.'/../Migrations');
+        $this->bootConfig();
         $this->bootViews();
         $this->registerApiRoutes();
         $this->registerWebRoutes();
@@ -31,8 +32,33 @@ class PagesServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->registerConfig();
         $this->registerPermissions();
         AgencmsHandler::register();
+    }
+
+    /**
+     * Publish the configuration file for editing within a project
+     *
+     * @return void
+     */
+    public function bootConfig()
+    {
+        $this->publishes([
+            __DIR__.'/../Config/agencmspages.php' => config_path('agencmspages.php'),
+        ]);
+    }
+
+    /**
+     * Load the package configuration to merge in with the App specific config
+     *
+     * @return void
+     */
+    public function registerConfig()
+    {
+        $this->mergeConfigFrom(
+            __DIR__.'/../Config/agencmspages.php', 'agencmspages'
+        );
     }
 
     /**

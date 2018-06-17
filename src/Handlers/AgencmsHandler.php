@@ -8,10 +8,12 @@ use Agencms\Core\Route;
 use Agencms\Core\Option;
 use Agencms\Core\Relationship;
 use Agencms\Core\Facades\Agencms;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Agencms\Pages\Middleware\AgencmsConfig;
 use Illuminate\Support\Facades\Route as Router;
+use Agencms\Pages\Handlers\ContentRepeaterHandler;
 use Agencms\StructuredData\Facades\StructuredData;
 
 class AgencmsHandler
@@ -73,30 +75,7 @@ class AgencmsHandler
                     ),
                     Group::full('Content')
                         ->repeater('content')
-                        ->addGroup(
-                            Group::full('Lead')
-                                ->key('lead')
-                                ->addField(
-                                    Field::image('image', 'Image')
-                                        ->ratio(1280, 800, $resize = true),
-                                    Field::string('title', 'Title'),
-                                    Field::string('subtitle', 'Subtitle')
-                                ),
-                            Group::full('Text')
-                                ->key('text')
-                                ->addField(
-                                    Field::string('text', 'Text')
-                                        ->multiline()
-                                ),
-                            Group::full('Image')
-                                ->key('image')
-                                ->addField(
-                                    Field::image('image', 'Image')
-                                        ->ratio(1280, 800, $resize = true),
-                                    Field::string('alt', 'Alternative Text'),
-                                    Field::string('href', 'Link Target')
-                                )
-                        ),
+                        ->addGroup(...App::make(config('agencmspages.content_repeaters'))::get()),
                     StructuredData::repeater()
                 )
         );

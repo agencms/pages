@@ -96,7 +96,6 @@ class AgencmsHandler
             Route::load('settings')
                 ->addGroup(
                     Group::full('Header')->key('header')->addField(
-                        Field::string('title', 'Title'),
                         Field::string('twitter-handle', 'Twitter Handle'),
                         Field::string('github-handle', 'Github Handle')
                     ),

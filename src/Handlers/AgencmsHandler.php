@@ -130,9 +130,6 @@ class AgencmsHandler
                     Group::full('Defaults')->key('defaults')->addField(
                         Field::image('sharingimage', 'Default Sharing Image')
                             ->ratio(1200, 630, true)
-                    ),
-                    Group::full('Config')->key('config')->addField(
-                        Field::string('ga_code', 'Google Analytics Id')
                     )
                 )
         );

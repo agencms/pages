@@ -52,14 +52,12 @@ class PageController extends Controller
         $social = Settings::get('global', 'sociallinks', []);
         $copyright = Settings::get('global', 'copyright', '');
         $shareimage = Settings::get('global', 'sharingimage', '');
-        $ga_code = Settings::get('global', 'ga_code', '');
 
         return view('agencms::page', compact([
             'page',
             'social',
             'copyright',
             'shareimage',
-            'ga_code',
             'title',
             'github_handle',
             'twitter_handle',
@@ -82,14 +80,12 @@ class PageController extends Controller
         $social = Settings::get('global', 'sociallinks', []);
         $copyright = Settings::get('global', 'copyright', '');
         $shareimage = Settings::get('global', 'sharingimage', '');
-        $ga_code = Settings::get('global', 'ga_code', '');
 
         return view('agencms::page', compact([
             'page',
             'social',
             'copyright',
             'shareimage',
-            'ga_code',
             'title',
             'github_handle',
             'twitter_handle',

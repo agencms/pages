@@ -1,5 +1,9 @@
 @extends('layouts.default')
 
+@section('title')
+    @render(\Agencms\Core\Components\Title::class, ['title' => array_get($page, 'name') ?? $title])
+@endsection
+
 @section('head-meta')
     @parent
 

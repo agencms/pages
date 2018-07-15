@@ -4,6 +4,7 @@ namespace Agencms\Pages\Handlers;
 
 use Agencms\Core\Field;
 use Agencms\Core\Group;
+use Agencms\Core\Relationship;
 use Agencms\Core\Contracts\RepeaterHandlerContract;
 
 class ContentRepeaterHandler implements RepeaterHandlerContract
@@ -43,6 +44,13 @@ class ContentRepeaterHandler implements RepeaterHandlerContract
                         ->ratio(1280, 800, $resize = true),
                     Field::string('alt', 'Alternative Text'),
                     Field::string('href', 'Link Target')
+                ),
+            Group::full('Related')
+                ->key('pages.related')
+                ->addField(
+                    Field::related('related', 'Pages')
+                        ->model(Relationship::make('pages'))
+                        ->multiple()
                 )
         ];
     }

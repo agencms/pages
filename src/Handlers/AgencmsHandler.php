@@ -95,36 +95,11 @@ class AgencmsHandler
         Agencms::appendRoute(
             Route::load('settings')
                 ->addGroup(
-                    Group::full('Header')->key('header')->addField(
-                        Field::string('twitter-handle', 'Twitter Handle'),
-                        Field::string('github-handle', 'Github Handle')
-                    ),
                     Group::full('Homepage')->key('homepage')->addField(
                         Field::related('homepage', 'Homepage')
                             ->model(
                                 Relationship::make('pages')
                             )
-                    ),
-                    Group::full('Social Links')->repeater('sociallinks')
-                        ->addGroup(
-                            Group::full('Link')->key('sociallink')->addField(
-                                Field::select('network', 'Network')
-                                    ->dropdown()
-                                    ->addOptions([
-                                        'Codepen',
-                                        'Facebook',
-                                        'Github',
-                                        'Instagram',
-                                        'LinkedIn',
-                                        'Twitter',
-                                    ])
-                                    ->small(),
-                                Field::string('url', 'Url')
-                                    ->large()
-                            )
-                        ),
-                    Group::full('Footer')->key('footer')->addField(
-                        Field::string('copyright', 'Copyright Notice')
                     ),
                     Group::full('Defaults')->key('defaults')->addField(
                         Field::image('sharingimage', 'Default Sharing Image')

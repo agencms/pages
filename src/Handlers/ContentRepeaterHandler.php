@@ -37,6 +37,13 @@ class ContentRepeaterHandler implements RepeaterHandlerContract
                     Field::string('text', 'Text')
                         ->multiline()
                 ),
+            Group::full('Quote')
+                ->key('pages.quote')
+                ->addField(
+                    Field::string('quotation', 'Quote')
+                        ->multiline()->required(),
+                    Field::string('citation', 'Citation')
+                ),
             Group::full('Image')
                 ->key('pages.image')
                 ->addField(
